@@ -84,14 +84,20 @@ const ChatScreen = () => {
                     onChangeText={setInputText}
                     placeholder="Nhập tin nhắn..."
                 />
-                <TouchableOpacity
-                    style={styles.sendButton}
-                    onPress={sendMessage}
-                >
-                    <Text style={styles.sendButtonText}>
-                        {inputText.trim() ? 'Gửi' : '👍'}
-                    </Text>
-                </TouchableOpacity>
+                {inputText.trim() ?
+                    <TouchableOpacity
+                        style={styles.sendButton}
+                        onPress={sendMessage}
+                    >
+                        <Text style={styles.sendButtonText}>Gửi
+                        </Text>
+                    </TouchableOpacity> :
+                    <TouchableOpacity onPress={sendMessage}>
+                        <Text style={styles.sendButtonLike}>👍
+                        </Text>
+                    </TouchableOpacity>
+                }
+
             </View>
         </View>
     );
@@ -153,5 +159,8 @@ const styles = StyleSheet.create({
     sendButtonText: {
         color: '#fff',
         fontSize: 16,
+    },
+    sendButtonLike: {
+        fontSize: 30,
     },
 });
